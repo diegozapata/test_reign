@@ -1,0 +1,16 @@
+<section class="switch_view">
+  <button
+    (click)="tabActive('all')"
+    class="all"
+    [ngClass]="{ active: tabAct === 'all' }"
+  >
+    <span>all</span>
+  </button>
+  <button
+    (click)="tabActive('fav')"
+    class="My-faves"
+    [ngClass]="{ active: tabAct === 'fav' }"
+  >
+    <span>My Faves</span>
+  </button>
+</section>

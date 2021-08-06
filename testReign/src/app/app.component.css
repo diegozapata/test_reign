@@ -1,0 +1,87 @@
+.Front-End-Test---Home-view {
+  padding: 0 0 98px;
+  background-color: #fcfcfc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.Rectangle-2-Copy {
+  height: 33px;
+  margin: 0 0 70px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  padding-left: 90px;
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
+}
+
+img.HACKER-NEWS {
+  width: 208px;
+  height: 28px;
+  object-fit: contain;
+  font-family: Baskerville;
+  font-size: 28px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  color: #3b3b3b;
+}
+
+/* @media (max-width: 1280px) {
+  .Front-End-Test---Home-view {
+    width: 1080px;
+    height: 768px;
+    padding: 0 0 58px;
+  }
+  .Rectangle-2-Copy {
+    width: 1080px;
+    height: 85px;
+    margin: 0 0 56px;
+    padding: 33px 811px 31px 112px;
+  }
+  img.HACKER-NEWS {
+    width: 156px;
+    height: 21px;
+    font-size: 21px;
+  }
+} */
+/* 
+@media (max-width: 720px) {
+  .Front-End-Test---Home-view {
+    width: 50%;
+    height: 50%;
+    padding: 0 0 98px;
+  }
+  .Rectangle-2-Copy {
+    width: 50%;
+    height: 50%;
+    margin: 0 0 70px;
+    padding: 44px 1082px 42px 150px;
+  }
+  img.HACKER-NEWS {
+    width: 50%;
+    height: 50%;
+  }
+} */
+
+/* //$ml = Medida para cambio plan, ajuste de botones
+  $ml: 1156.98px;
+  $md: 991.98px;
+  $sm: 767.98px;
+  //$sl = Medida para cambio plan, ajuste de botones
+  $sl: 691.98px;
+  //$smxs = Medida para cambio plan, ajuste de botones
+  $smxs: 615.98px;
+  //$ss = Medida para cambio plan, ajuste de botones
+  $ss: 601.98px;
+  $xs: 575.98px;
+  $xxs: 339.98px;
+  //medida para textos Equipo x equipo
+  $sml: 780px;
+  //viewport movil standar
+  $movilL: 720px;
+   */

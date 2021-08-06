@@ -1,0 +1,14 @@
+<form [formGroup]="languageForm" style="display: flex">
+  <select
+    name="language"
+    id="language"
+    formControlName="language"
+    (change)="onChange($event)"
+    required
+  >
+    <option [ngValue]="null" [disabled]="true">Select your news</option>
+    <option *ngFor="let l of language" [ngValue]="l">
+      {{ l }}
+    </option>
+  </select>
+</form>
