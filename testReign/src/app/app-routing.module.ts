@@ -6,8 +6,8 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'home', component: AppNewsComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', component: AppNewsComponent },
+      { path: '', redirectTo: '', pathMatch: 'full' },
     ],
   },
 ];

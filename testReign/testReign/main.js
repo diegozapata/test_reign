@@ -715,8 +715,8 @@ const routes = [
     {
         path: '',
         children: [
-            { path: 'home', component: _components_app_news_app_news_component__WEBPACK_IMPORTED_MODULE_1__["AppNewsComponent"] },
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '', component: _components_app_news_app_news_component__WEBPACK_IMPORTED_MODULE_1__["AppNewsComponent"] },
+            { path: '', redirectTo: '', pathMatch: 'full' },
         ],
     },
 ];
