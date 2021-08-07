@@ -12,6 +12,39 @@ module.exports = __webpack_require__(/*! C:\Users\dfzapato\Documents\Reign\test_
 
 /***/ }),
 
+/***/ "Ado8":
+/*!******************************************!*\
+  !*** ./src/app/services/news.service.ts ***!
+  \******************************************/
+/*! exports provided: NewsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsService", function() { return NewsService; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "AytR");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+
+
+class NewsService {
+    constructor(http) {
+        this.http = http;
+    }
+    getNews(language, page) {
+        const url = `${_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].RESTservices.news.baseUrl}${_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].RESTservices.news.search}?query=${language}&page=${page}`;
+        return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(() => { }));
+    }
+}
+NewsService.ɵfac = function NewsService_Factory(t) { return new (t || NewsService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
+NewsService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: NewsService, factory: NewsService.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
 /***/ "AytR":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -22,20 +55,19 @@ module.exports = __webpack_require__(/*! C:\Users\dfzapato\Documents\Reign\test_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false
+    production: false,
+    log: {
+        active: 'true',
+        level: 'TRACE',
+    },
+    RESTservices: {
+        news: {
+            baseUrl: ' https://hn.algolia.com/api/v1/',
+            search: 'search_by_date',
+        },
+    },
 };
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 
 /***/ }),
@@ -50,60 +82,83 @@ const environment = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltertNewsComponent", function() { return FiltertNewsComponent; });
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var src_app_services_persistence_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/persistence.service */ "lxVI");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
 
 
 
 
 function FiltertNewsComponent_option_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "option", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const l_r1 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngValue", l_r1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", l_r1, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", l_r1.model);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", l_r1.img, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", l_r1.model, " ");
 } }
 class FiltertNewsComponent {
-    constructor(formBuilder) {
+    constructor(formBuilder, persistenceUtilService) {
         this.formBuilder = formBuilder;
-        this.language = ['angular', 'reactjs', 'vuejs'];
+        this.persistenceUtilService = persistenceUtilService;
+        this.language = [
+            { model: 'angular', img: '../../../assets/img/image-138.png' },
+            { model: 'reactjs', img: '../../../assets/img/image-140.png' },
+            { model: 'vuejs', img: '../../../assets/img/image-141.png' },
+        ];
+        this.controllerFilter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     ngOnInit() {
         this.initForm();
+        this.reLoad();
     }
     initForm() {
         this.languageForm = this.formBuilder.group({
-            language: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            language: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             validacion: [{ disabled: true }],
         });
         this.languageForm.controls.validacion.disable();
     }
     onChange(event) {
-        console.log(this.languageForm.value.language);
+        this.selectLanguage = this.languageForm.value.language;
+        this.controllerFilter.emit({
+            selectLanguage: this.selectLanguage,
+        });
+    }
+    reLoad() {
+        const persistence = this.persistenceUtilService.getLocal('nameFilter');
+        if (persistence) {
+            this.languageForm.controls.language.setValue(persistence);
+            this.selectLanguage = this.languageForm.value.language;
+        }
     }
 }
-FiltertNewsComponent.ɵfac = function FiltertNewsComponent_Factory(t) { return new (t || FiltertNewsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"])); };
-FiltertNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FiltertNewsComponent, selectors: [["app-filtert-news"]], decls: 5, vars: 4, consts: [[2, "display", "flex", 3, "formGroup"], ["name", "language", "id", "language", "formControlName", "language", "required", "", 3, "change"], [3, "ngValue", "disabled"], [3, "ngValue", 4, "ngFor", "ngForOf"], [3, "ngValue"]], template: function FiltertNewsComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "form", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "select", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function FiltertNewsComponent_Template_select_change_1_listener($event) { return ctx.onChange($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "option", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Select your news");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, FiltertNewsComponent_option_4_Template, 2, 2, "option", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+FiltertNewsComponent.ɵfac = function FiltertNewsComponent_Factory(t) { return new (t || FiltertNewsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_persistence_service__WEBPACK_IMPORTED_MODULE_2__["PersistenceUtilService"])); };
+FiltertNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FiltertNewsComponent, selectors: [["app-filtert-news"]], outputs: { controllerFilter: "controllerFilter" }, decls: 5, vars: 4, consts: [[2, "display", "flex", 3, "formGroup"], ["name", "language", "id", "language", "formControlName", "language", "required", "", 1, "select_class", 3, "change"], [3, "ngValue", "disabled"], [3, "ngValue", 4, "ngFor", "ngForOf"], [3, "ngValue"], [1, "Image-140", 3, "src"]], template: function FiltertNewsComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "select", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FiltertNewsComponent_Template_select_change_1_listener($event) { return ctx.onChange($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "option", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Select your news");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, FiltertNewsComponent_option_4_Template, 3, 3, "option", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.languageForm);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngValue", null)("disabled", true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.language);
-    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_z"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmaWx0ZXJ0LW5ld3MuY29tcG9uZW50LmNzcyJ9 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.languageForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", null)("disabled", true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.language);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_z"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]], styles: [".select_class[_ngcontent-%COMP%] {\r\n  width: 183px;\r\n  height: 22px;\r\n  margin: 2px 19px 0px 92px;\r\n  font-family: Roboto;\r\n  font-size: 14px;\r\n  font-weight: normal;\r\n  font-stretch: normal;\r\n  font-style: normal;\r\n  line-height: 1.57;\r\n  letter-spacing: normal;\r\n  color: #343434;\r\n}\r\n\r\nimg.Image-140[_ngcontent-%COMP%] {\r\n  width: 24px;\r\n  height: 24px;\r\n  margin: 6px 13px 0 0;\r\n  object-fit: contain;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpbHRlcnQtbmV3cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBWTtFQUNaLFlBQVk7RUFDWix5QkFBeUI7RUFDekIsbUJBQW1CO0VBQ25CLGVBQWU7RUFDZixtQkFBbUI7RUFDbkIsb0JBQW9CO0VBQ3BCLGtCQUFrQjtFQUNsQixpQkFBaUI7RUFDakIsc0JBQXNCO0VBQ3RCLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsWUFBWTtFQUNaLG9CQUFvQjtFQUNwQixtQkFBbUI7QUFDckIiLCJmaWxlIjoiZmlsdGVydC1uZXdzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0X2NsYXNzIHtcclxuICB3aWR0aDogMTgzcHg7XHJcbiAgaGVpZ2h0OiAyMnB4O1xyXG4gIG1hcmdpbjogMnB4IDE5cHggMHB4IDkycHg7XHJcbiAgZm9udC1mYW1pbHk6IFJvYm90bztcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcclxuICBmb250LXN0cmV0Y2g6IG5vcm1hbDtcclxuICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgbGluZS1oZWlnaHQ6IDEuNTc7XHJcbiAgbGV0dGVyLXNwYWNpbmc6IG5vcm1hbDtcclxuICBjb2xvcjogIzM0MzQzNDtcclxufVxyXG5cclxuaW1nLkltYWdlLTE0MCB7XHJcbiAgd2lkdGg6IDI0cHg7XHJcbiAgaGVpZ2h0OiAyNHB4O1xyXG4gIG1hcmdpbjogNnB4IDEzcHggMCAwO1xyXG4gIG9iamVjdC1maXQ6IGNvbnRhaW47XHJcbn1cclxuIl19 */"] });
 
 
 /***/ }),
@@ -129,29 +184,40 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AppNewsComponent_app_filtert_news_1_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-filtert-news");
+    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-filtert-news", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("controllerFilter", function AppNewsComponent_app_filtert_news_1_Template_app_filtert_news_controllerFilter_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r2); const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r1.controllerFilter($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class AppNewsComponent {
     constructor() {
         this.flagFilter = true;
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.tabAct = 'all';
+    }
     controllerList($event) {
+        this.tabAct = $event.tabAct;
         $event.tabAct === 'fav'
             ? (this.flagFilter = false)
             : (this.flagFilter = true);
     }
+    controllerFilter($event) {
+        this.selectLanguage = $event.selectLanguage;
+    }
 }
 AppNewsComponent.ɵfac = function AppNewsComponent_Factory(t) { return new (t || AppNewsComponent)(); };
-AppNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppNewsComponent, selectors: [["app-app-news"]], decls: 3, vars: 1, consts: [[3, "controllerList"], [4, "ngIf"]], template: function AppNewsComponent_Template(rf, ctx) { if (rf & 1) {
+AppNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppNewsComponent, selectors: [["app-app-news"]], decls: 3, vars: 4, consts: [[3, "controllerList"], [3, "controllerFilter", 4, "ngIf"], [3, "flagFilter", "tabAct", "selectLanguage"], [3, "controllerFilter"]], template: function AppNewsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-switch-publications", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("controllerList", function AppNewsComponent_Template_app_switch_publications_controllerList_0_listener($event) { return ctx.controllerList($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AppNewsComponent_app_filtert_news_1_Template, 1, 0, "app-filtert-news", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "app-list-news");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "app-list-news", 2);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.flagFilter);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("flagFilter", ctx.flagFilter)("tabAct", ctx.tabAct)("selectLanguage", ctx.selectLanguage);
     } }, directives: [_shared_switch_publications_switch_publications_component__WEBPACK_IMPORTED_MODULE_1__["SwitchPublicationsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _shared_list_news_list_news_component__WEBPACK_IMPORTED_MODULE_3__["ListNewsComponent"], _shared_filtert_news_filtert_news_component__WEBPACK_IMPORTED_MODULE_4__["FiltertNewsComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAtbmV3cy5jb21wb25lbnQuY3NzIn0= */"] });
 
 
@@ -168,18 +234,119 @@ AppNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListNewsComponent", function() { return ListNewsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_news_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/news.service */ "Ado8");
+/* harmony import */ var _utils_logger_factory_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/logger-factory.service */ "ca1u");
+/* harmony import */ var _services_persistence_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/persistence.service */ "lxVI");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-pagination */ "oOf3");
 
+
+
+
+
+
+function ListNewsComponent_section_0_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const item_r2 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](item_r2.author);
+} }
+function ListNewsComponent_pagination_controls_2_Template(rf, ctx) { if (rf & 1) {
+    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pagination-controls", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("pageChange", function ListNewsComponent_pagination_controls_2_Template_pagination_controls_pageChange_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.pageChanged($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+const _c0 = function (a1, a2, a3) { return { id: "news", itemsPerPage: a1, currentPage: a2, totalItems: a3 }; };
 class ListNewsComponent {
-    constructor() { }
+    constructor(newsService, loggerFactory, persistenceUtilService) {
+        this.newsService = newsService;
+        this.loggerFactory = loggerFactory;
+        this.persistenceUtilService = persistenceUtilService;
+    }
     ngOnInit() {
+        this.page = 0;
+        // console.log(this.flagFilter);
+        // console.log(this.selectLanguage);
+        // this.getOrdenes(this.selectLanguage, this.page);
+        this.reLoad();
+    }
+    ngOnChanges() {
+        // console.log(this.flagFilter);
+        // console.log(this.selectLanguage);
+        this.getOrdenes(this.selectLanguage, this.page);
+    }
+    getOrdenes(selectLanguage, page) {
+        this.dataNews = [];
+        switch (this.tabAct) {
+            case 'all':
+                if (selectLanguage) {
+                    this.selectLanguage = selectLanguage;
+                    this.persistenceUtilService.saveLocal('nameFilter', this.selectLanguage);
+                    this.newsService.getNews(selectLanguage, page).subscribe((data) => {
+                        this.dataNews = data.hits;
+                        this.dataNews = this.dataNews.filter((dataNews) => dataNews.author !== null &&
+                            dataNews.created_at !== null &&
+                            dataNews.story_title !== null &&
+                            dataNews.story_url !== null);
+                        // console.log(this.dataNews);
+                        this.itemsPerPage = data.hitsPerPage;
+                        this.currentPage = this.page;
+                        this.totalItems = data.nbHits;
+                    }, (error) => {
+                        this.loggerFactory.error(`[Error] - Error al solicitar news`);
+                    });
+                }
+                break;
+            case 'fav':
+                this.selectLanguage = selectLanguage;
+                this.dataNews.push({
+                    author: 'mmm',
+                    created_at: 'aaaa',
+                    story_title: 'prueba',
+                    story_url: 'dfsfsad',
+                }, {
+                    author: 'mmm',
+                    created_at: 'aaaa',
+                    story_title: 'prueba',
+                    story_url: 'dfsfsad',
+                });
+                this.itemsPerPage = 20;
+                this.currentPage = 1;
+                this.totalItems = this.dataNews.length;
+                break;
+        }
+    }
+    pageChanged($event) {
+        this.page = $event;
+        // console.log($event);
+        this.aux = $event - 1;
+        // console.log(this.aux);
+        this.getOrdenes(this.selectLanguage, this.aux);
+    }
+    reLoad() {
+        const persistence = this.persistenceUtilService.getLocal('nameFilter');
+        console.log(persistence);
+        if (persistence) {
+            this.getOrdenes(persistence, 0);
+        }
     }
 }
-ListNewsComponent.ɵfac = function ListNewsComponent_Factory(t) { return new (t || ListNewsComponent)(); };
-ListNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ListNewsComponent, selectors: [["app-list-news"]], decls: 2, vars: 0, template: function ListNewsComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "list-news works!");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsaXN0LW5ld3MuY29tcG9uZW50LmNzcyJ9 */"] });
+ListNewsComponent.ɵfac = function ListNewsComponent_Factory(t) { return new (t || ListNewsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_news_service__WEBPACK_IMPORTED_MODULE_1__["NewsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_utils_logger_factory_service__WEBPACK_IMPORTED_MODULE_2__["LoggerFactory"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_persistence_service__WEBPACK_IMPORTED_MODULE_3__["PersistenceUtilService"])); };
+ListNewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ListNewsComponent, selectors: [["app-list-news"]], inputs: { flagFilter: "flagFilter", selectLanguage: "selectLanguage", page: "page", tabAct: "tabAct" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]], decls: 3, vars: 9, consts: [[4, "ngFor", "ngForOf"], ["id", "news", "previousLabel", "Prev", "nextLabel", "Next", 3, "pageChange", 4, "ngIf"], ["id", "news", "previousLabel", "Prev", "nextLabel", "Next", 3, "pageChange"]], template: function ListNewsComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, ListNewsComponent_section_0_Template, 3, 1, "section", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "paginate");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ListNewsComponent_pagination_controls_2_Template, 1, 0, "pagination-controls", 1);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](1, 2, ctx.dataNews, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction3"](5, _c0, ctx.itemsPerPage, ctx.currentPage, ctx.totalItems)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selectLanguage);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], ngx_pagination__WEBPACK_IMPORTED_MODULE_5__["PaginationControlsComponent"]], pipes: [ngx_pagination__WEBPACK_IMPORTED_MODULE_5__["PaginatePipe"]], styles: [".cnt_paginador[_ngcontent-%COMP%] {\r\n  margin-left: auto;\r\n  margin-right: 1rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxpc3QtbmV3cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0VBQ2pCLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJsaXN0LW5ld3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jbnRfcGFnaW5hZG9yIHtcclxuICBtYXJnaW4tbGVmdDogYXV0bztcclxuICBtYXJnaW4tcmlnaHQ6IDFyZW07XHJcbn1cclxuIl19 */"] });
 
 
 /***/ }),
@@ -238,7 +405,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_filtert_news_filtert_news_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/filtert-news/filtert-news.component */ "CpGm");
 /* harmony import */ var _components_app_news_app_news_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/app-news/app-news.component */ "JNGM");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-pagination */ "oOf3");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
 
 
 
@@ -253,15 +424,17 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵdefineInjector"]({ providers: [angular_persistence__WEBPACK_IMPORTED_MODULE_4__["PersistenceService"], _services_persistence_service__WEBPACK_IMPORTED_MODULE_5__["PersistenceUtilService"]], imports: [[
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵdefineInjector"]({ providers: [angular_persistence__WEBPACK_IMPORTED_MODULE_4__["PersistenceService"], _services_persistence_service__WEBPACK_IMPORTED_MODULE_5__["PersistenceUtilService"]], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"],
             angular_persistence__WEBPACK_IMPORTED_MODULE_4__["PersistenceModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
+            ngx_pagination__WEBPACK_IMPORTED_MODULE_11__["NgxPaginationModule"],
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
         _shared_switch_publications_switch_publications_component__WEBPACK_IMPORTED_MODULE_3__["SwitchPublicationsComponent"],
         _shared_list_news_list_news_component__WEBPACK_IMPORTED_MODULE_6__["ListNewsComponent"],
         _shared_filtert_news_filtert_news_component__WEBPACK_IMPORTED_MODULE_7__["FiltertNewsComponent"],
@@ -269,7 +442,128 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵdefineInjecto
         _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"],
         angular_persistence__WEBPACK_IMPORTED_MODULE_4__["PersistenceModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]] }); })();
+        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
+        ngx_pagination__WEBPACK_IMPORTED_MODULE_11__["NgxPaginationModule"]] }); })();
+
+
+/***/ }),
+
+/***/ "ca1u":
+/*!*************************************************!*\
+  !*** ./src/app/utils/logger-factory.service.ts ***!
+  \*************************************************/
+/*! exports provided: LoggerFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoggerFactory", function() { return LoggerFactory; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "AytR");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+/**
+ * Servicio de control de log.
+ */
+class LoggerFactory {
+    /**
+     * Constructor obtiene desde el archivo enviroment
+     *  el estado de activacion y el nivel a imprimir.
+     */
+    constructor() {
+        this.active = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].log.active === 'true';
+        switch (_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].log.level) {
+            case 'TRACE':
+                this.level = 4;
+                break;
+            case 'DEBUG':
+                this.level = 3;
+                break;
+            case 'INFO':
+                this.level = 2;
+                break;
+            case 'WARNING':
+                this.level = 1;
+                break;
+            case 'ERROR':
+                this.level = 0;
+                break;
+        }
+    }
+    /**
+     * Desplegar un mensaje de nivel TRACE en consola.
+     * @param msg Mensaje a desplegar
+     * @param object [Optional] Object to print.
+     */
+    trace(msg, object = '') {
+        if (this.active && this.level >= 0) {
+            console.log(this.generateMessage(msg), object);
+        }
+    }
+    /**
+     * Despliega un mensaje de nivel DEBUD en consola.
+     * @param msg Mensaje a desplegar
+     * @param object [Optional] Object to print.
+     */
+    debug(msg, object = '') {
+        if (this.active && this.level >= 1) {
+            console.log(this.generateMessage(msg), object);
+        }
+    }
+    /**
+     * Despliega un mensaje de nivel INFO en consola.
+     * @param msg Mensaje a desplegar.
+     * @param object [Optional] Object to print.
+     */
+    info(msg, object = '') {
+        if (this.active && this.level >= 2) {
+            console.log(this.generateMessage(msg), object);
+        }
+    }
+    /**
+     * Despliega un mensaje de nivel WARNING en consola.
+     * @param msg Mensaje a desplegar.
+     * @param object [Optional] Object to print.
+     */
+    warning(msg, object = '') {
+        if (this.active && this.level >= 3) {
+            console.warn(this.generateMessage(msg), object);
+        }
+    }
+    /**
+     * Despliega un mensaje de nivel ERROR en consola.
+     * @param msg Mensaje a desplegar.
+     * @param object [Optional] Object to print.
+     */
+    error(msg, object = '') {
+        if (this.active && this.level >= 4) {
+            console.error(this.generateMessage(msg), object);
+        }
+    }
+    /**
+     * Despliega un mensaje en consola saltandose estado y nivel definido de log.
+     * @param msg  mensaje a desplegar.
+     * @param object [Optional] Object to print.
+     */
+    force(msg, object = '') {
+        console.log(this.generateMessage(msg), object);
+    }
+    /**
+     * Metodo que genera el string a imprimir en consola.
+     * @param msg Mensaje a desplegar.
+     */
+    generateMessage(msg) {
+        if (msg) {
+            return '[' + new Date().toLocaleString() + '] ' + msg;
+        }
+        else {
+            return '';
+        }
+    }
+}
+LoggerFactory.ɵfac = function LoggerFactory_Factory(t) { return new (t || LoggerFactory)(); };
+LoggerFactory.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: LoggerFactory, factory: LoggerFactory.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -299,25 +593,20 @@ class SwitchPublicationsComponent {
         this.route = route;
         this.persistenceUtilService = persistenceUtilService;
         this.controllerList = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.tabAct = 'all';
     }
     ngOnInit() {
-        this.persistenceUtilService.saveLocal('nameFilter', 'all');
-        this.persistenceUtilService.removeLocal('nameFilter');
+        this.reLoad();
+        this.tabActive(this.tabAct);
+    }
+    reLoad() {
+        const persistence = this.persistenceUtilService.getLocal('tabAct');
+        persistence ? (this.tabAct = persistence) : (this.tabAct = 'all');
     }
     // Activa la pestaña seleccionada y hace el switcheo entre vistas (all/fav).
     tabActive(tabVal) {
         this.tabAct = tabVal;
-        switch (tabVal) {
-            case 'all':
-                console.log('all');
-                break;
-            case 'fav':
-                console.log('fav');
-                break;
-        }
+        this.persistenceUtilService.saveLocal('tabAct', this.tabAct);
         this.controllerList.emit({
-            noValido: false,
             tabAct: tabVal,
         });
     }
@@ -386,15 +675,17 @@ class PersistenceUtilService {
             type: angular_persistence__WEBPACK_IMPORTED_MODULE_0__["StorageType"].LOCAL,
         });
     }
+    // tslint:disable-next-line:typedef
     getLocal(key) {
         return this.persistenceService.get(key, angular_persistence__WEBPACK_IMPORTED_MODULE_0__["StorageType"].LOCAL);
     }
+    // tslint:disable-next-line:typedef
     removeLocal(key) {
         return this.persistenceService.remove(key, angular_persistence__WEBPACK_IMPORTED_MODULE_0__["StorageType"].LOCAL);
     }
     limpiarOrdenesYFormularios() {
         localStorage.removeItem('ANGULAR_PERSISTENCE_STORAGE::nameFilter');
-        localStorage.removeItem('ANGULAR_PERSISTENCE_STORAGE::favPubli');
+        localStorage.removeItem('ANGULAR_PERSISTENCE_STORAGE::tabAct');
     }
 }
 PersistenceUtilService.ɵfac = function PersistenceUtilService_Factory(t) { return new (t || PersistenceUtilService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](angular_persistence__WEBPACK_IMPORTED_MODULE_0__["PersistenceService"])); };

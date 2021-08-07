@@ -31,15 +31,17 @@ export class PersistenceUtilService {
     });
   }
 
-  getLocal(key: string): void {
+  // tslint:disable-next-line:typedef
+  getLocal(key: string) {
     return this.persistenceService.get(key, StorageType.LOCAL);
   }
-  removeLocal(key: string): void {
+  // tslint:disable-next-line:typedef
+  removeLocal(key: string) {
     return this.persistenceService.remove(key, StorageType.LOCAL);
   }
 
   limpiarOrdenesYFormularios(): void {
     localStorage.removeItem('ANGULAR_PERSISTENCE_STORAGE::nameFilter');
-    localStorage.removeItem('ANGULAR_PERSISTENCE_STORAGE::favPubli');
+    localStorage.removeItem('ANGULAR_PERSISTENCE_STORAGE::tabAct');
   }
 }

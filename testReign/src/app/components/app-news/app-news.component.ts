@@ -7,13 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppNewsComponent implements OnInit {
   flagFilter = true;
+  selectLanguage!: string;
+  tabAct!: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tabAct = 'all';
+  }
 
-  controllerList($event: { noValido: any; tabAct: any }): void {
+  controllerList($event: { tabAct: any }): void {
+    this.tabAct = $event.tabAct;
     $event.tabAct === 'fav'
       ? (this.flagFilter = false)
       : (this.flagFilter = true);
+  }
+
+  controllerFilter($event: { selectLanguage: any }): void {
+    this.selectLanguage = $event.selectLanguage;
   }
 }

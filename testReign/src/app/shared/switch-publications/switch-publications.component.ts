@@ -8,36 +8,30 @@ import { PersistenceUtilService } from '../../services/persistence.service';
   styleUrls: ['./switch-publications.component.css'],
 })
 export class SwitchPublicationsComponent implements OnInit {
+  tabAct!: string;
   constructor(
     private route: Router,
     private persistenceUtilService: PersistenceUtilService
   ) {}
 
   @Output() controllerList = new EventEmitter<{
-    noValido: boolean;
     tabAct: string;
   }>();
 
-  tabAct = 'all';
-
   ngOnInit(): void {
-    this.persistenceUtilService.saveLocal('nameFilter', 'all');
-    this.persistenceUtilService.removeLocal('nameFilter');
+    this.reLoad();
+    this.tabActive(this.tabAct);
+  }
+  reLoad(): void {
+    const persistence = this.persistenceUtilService.getLocal('tabAct');
+    persistence ? (this.tabAct = persistence) : (this.tabAct = 'all');
   }
 
   // Activa la pestaña seleccionada y hace el switcheo entre vistas (all/fav).
   tabActive(tabVal: any): void {
     this.tabAct = tabVal;
-    switch (tabVal) {
-      case 'all':
-        console.log('all');
-        break;
-      case 'fav':
-        console.log('fav');
-        break;
-    }
+    this.persistenceUtilService.saveLocal('tabAct', this.tabAct);
     this.controllerList.emit({
-      noValido: false,
       tabAct: tabVal,
     });
   }

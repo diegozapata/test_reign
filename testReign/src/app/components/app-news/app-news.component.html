@@ -2,6 +2,13 @@
   (controllerList)="controllerList($event)"
 ></app-switch-publications>
 
-<app-filtert-news *ngIf="flagFilter"></app-filtert-news>
+<app-filtert-news
+  *ngIf="flagFilter"
+  (controllerFilter)="controllerFilter($event)"
+></app-filtert-news>
 
-<app-list-news></app-list-news>
+<app-list-news
+  [flagFilter]="flagFilter"
+  [tabAct]="tabAct"
+  [selectLanguage]="selectLanguage"
+></app-list-news>

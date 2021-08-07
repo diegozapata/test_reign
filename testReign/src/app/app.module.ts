@@ -10,6 +10,8 @@ import { ListNewsComponent } from './shared/list-news/list-news.component';
 import { FiltertNewsComponent } from './shared/filtert-news/filtert-news.component';
 import { AppNewsComponent } from './components/app-news/app-news.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PersistenceModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [PersistenceService, PersistenceUtilService],
   bootstrap: [AppComponent],

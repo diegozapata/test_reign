@@ -1,5 +1,6 @@
 <form [formGroup]="languageForm" style="display: flex">
   <select
+    class="select_class"
     name="language"
     id="language"
     formControlName="language"
@@ -7,8 +8,10 @@
     required
   >
     <option [ngValue]="null" [disabled]="true">Select your news</option>
-    <option *ngFor="let l of language" [ngValue]="l">
-      {{ l }}
+    <option *ngFor="let l of language" [ngValue]="l.model">
+      <img src="{{ l.img }}" class="Image-140" />
+
+      {{ l.model }}
     </option>
   </select>
 </form>

@@ -1,1 +1,21 @@
-<p>list-news works!</p>
+<section
+  *ngFor="
+    let item of dataNews
+      | paginate
+        : {
+            id: 'news',
+            itemsPerPage: itemsPerPage,
+            currentPage: currentPage,
+            totalItems: totalItems
+          }
+  "
+>
+  <p>{{ item.author }}</p>
+</section>
+<pagination-controls
+  *ngIf="selectLanguage"
+  id="news"
+  previousLabel="Prev"
+  nextLabel="Next"
+  (pageChange)="pageChanged($event)"
+></pagination-controls>
