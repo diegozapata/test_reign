@@ -2,8 +2,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { LoggerFactory } from '../../utils/logger-factory.service';
 import { News } from '../../models/news.model';
-import { filter } from 'rxjs/operators';
 import { PersistenceUtilService } from '../../services/persistence.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-list-news',
@@ -34,8 +34,6 @@ export class ListNewsComponent implements OnInit, OnChanges {
     this.reLoad();
   }
   ngOnChanges(): void {
-    // console.log(this.flagFilter);
-    // console.log(this.selectLanguage);
     this.getOrdenes(this.selectLanguage, this.page);
   }
 
@@ -60,6 +58,7 @@ export class ListNewsComponent implements OnInit, OnChanges {
                   dataNews.story_url !== null
               );
               // console.log(this.dataNews);
+              this.transformHour(this.dataNews);
               this.itemsPerPage = data.hitsPerPage;
               this.currentPage = this.page;
               this.totalItems = data.nbHits;
@@ -102,9 +101,25 @@ export class ListNewsComponent implements OnInit, OnChanges {
 
   reLoad(): void {
     const persistence = this.persistenceUtilService.getLocal('nameFilter');
-    console.log(persistence);
     if (persistence) {
       this.getOrdenes(persistence, 0);
+    }
+  }
+
+  transformHour(dataNews: News[]): void {
+    const hora = new Date();
+    dataNews.map((data) => {
+      data.created_at = data.created_at.replace('T', ' ');
+      data.created_at = data.created_at.replace('.000Z', '');
+      data.numberHours = moment(hora).diff(moment(data.created_at), 'hours');
+    });
+  }
+  executeClick(url: string): void {
+    if (url) {
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.click();
     }
   }
 }

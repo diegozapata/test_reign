@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SwitchPublicationsComponent } from './shared/switch-publications/switch-publications.component';
@@ -12,7 +12,7 @@ import { AppNewsComponent } from './components/app-news/app-news.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { NgSelect2Module } from 'ng-select2';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +29,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    CommonModule,
+    NgSelect2Module,
   ],
   providers: [PersistenceService, PersistenceUtilService],
   bootstrap: [AppComponent],

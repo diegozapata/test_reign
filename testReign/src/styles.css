@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+li.current {
+  background: #1890ff !important;
+  border-radius: 6px !important;
+}
+li {
+  border-radius: 6px !important;
+  border: solid 1px rgba(0, 0, 0, 0.15) !important;
+}
+.ngx-pagination a,
+.ngx-pagination button {
+  color: rgba(0, 0, 0, 0.65) !important;
+}
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+  content: "<" !important;
+  font-family: "icomoon" !important;
+  margin-right: 0px !important;
+}
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  content: ">" !important;
+  margin-left: 0px !important;
+}
+.ngx-pagination li {
+  margin-right: 8px !important;
+}

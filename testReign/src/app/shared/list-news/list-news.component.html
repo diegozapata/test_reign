@@ -10,12 +10,50 @@
           }
   "
 >
-  <p>{{ item.author }}</p>
+  <div class="row">
+    <div class="col">
+      <div class="row_2">
+        <div class="col_inter">
+          <span (click)="executeClick(item.story_url)">
+            <div class="time">
+              <i class="icon-time"></i>
+              <span class="hours-ago-by-autho"
+                >{{ item.numberHours }} hours ago by {{ item.author }}</span
+              >
+            </div>
+            <div class="title">
+              <span class="event-driven-state-m">{{ item.story_title }}</span>
+            </div>
+          </span>
+        </div>
+        <div class="col_inter2"></div>
+      </div>
+    </div>
+    <div class="col_2">
+      <div class="row_2">
+        <div class="col_inter">
+          <span (click)="executeClick(item.story_url)">
+            <div class="time">
+              <i class="icon-time"></i>
+              <span class="hours-ago-by-autho"
+                >{{ item.numberHours }} hours ago by {{ item.author }}</span
+              >
+            </div>
+            <div class="title">
+              <span class="event-driven-state-m">{{ item.story_title }}</span>
+            </div>
+          </span>
+        </div>
+        <div class="col_inter2"></div>
+      </div>
+    </div>
+  </div>
 </section>
 <pagination-controls
+  class="pagination"
   *ngIf="selectLanguage"
   id="news"
-  previousLabel="Prev"
-  nextLabel="Next"
+  previousLabel=""
+  nextLabel=""
   (pageChange)="pageChanged($event)"
 ></pagination-controls>
