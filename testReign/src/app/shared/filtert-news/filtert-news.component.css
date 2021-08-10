@@ -18,3 +18,51 @@ img.Image-140 {
   margin: 6px 13px 0 0;
   object-fit: contain;
 }
+@media (max-width: 1680px) {
+  .select_class {
+    margin: 2px 19px 0px 76px;
+  }
+}
+@media (max-width: 1667px) {
+  .select_class {
+    margin: 2px 19px 0px 70px;
+  }
+}
+@media (max-width: 1600px) {
+  .select_class {
+    margin: 2px 19px 0px 69px;
+  }
+}
+
+@media (max-width: 1540px) {
+  .select_class {
+    margin: 2px 19px 0px 40px;
+  }
+}
+
+@media (max-width: 1365px) {
+  .select_class {
+    margin: 2px 19px 0px 27px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .select_class {
+    margin: 2px 19px 0px 14px;
+  }
+}
+@media (max-width: 1210px) {
+  .select_class {
+    margin: 2px 19px 0px 11px;
+  }
+}
+@media (max-width: 1163px) {
+  .select_class {
+    margin: 2px 19px 0px 18px;
+  }
+}
+@media (max-width: 1030px) {
+  .select_class {
+    margin: 2px 19px 0px 49px;
+  }
+}
