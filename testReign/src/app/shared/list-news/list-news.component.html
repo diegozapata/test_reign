@@ -1,57 +1,117 @@
-<section
-  *ngFor="
-    let item of dataNews
-      | paginate
-        : {
-            id: 'news',
-            itemsPerPage: itemsPerPage,
-            currentPage: currentPage,
-            totalItems: totalItems
-          }
-  "
->
-  <div class="row">
-    <div class="col">
-      <div class="row_2">
-        <div class="col_inter">
-          <span (click)="executeClick(item.story_url)">
-            <div class="time">
-              <i class="icon-time"></i>
-              <span class="hours-ago-by-autho"
-                >{{ item.numberHours }} hours ago by {{ item.author }}</span
-              >
-            </div>
-            <div class="title">
-              <span class="event-driven-state-m">{{ item.story_title }}</span>
-            </div>
-          </span>
+<section class="section_big">
+  <section class="section_large">
+    <div
+      class="row"
+      *ngFor="
+        let item of dataNewsOne
+          | paginate
+            : {
+                id: 'news',
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalItems
+              };
+        let i = index
+      "
+    >
+      <div class="col">
+        <div
+          class="row_2"
+          id="{{ item.author }}{{ i }}"
+          (mouseover)="Onmouseover($event, item.author, i)"
+          (mouseout)="Onmouseout($event, item.author, i)"
+        >
+          <div class="col_inter">
+            <span (click)="executeClick(item.story_url)">
+              <div class="time">
+                <span class="icomoon-liga icon-time time_icon"></span>
+                <span class="hours-ago-by-autho"
+                  >{{ item.numberHours }} hours ago by {{ item.author }}</span
+                >
+              </div>
+              <div class="title">
+                <span class="event-driven-state-m" id="{{ item }}">{{
+                  item.story_title
+                }}</span>
+              </div>
+            </span>
+          </div>
+          <div class="col_inter2">
+            <span
+              *ngIf="dataNewsPersistence.lastIndexOf(item) !== -1"
+              class="icomoon-liga icon-heart heart"
+              (click)="checkboxChanged(item, false)"
+            ></span>
+            <span
+              *ngIf="dataNewsPersistence.lastIndexOf(item) === -1"
+              class="icomoon-liga heart"
+              (click)="checkboxChanged(item, true)"
+              ><img src="../../../assets/img/iconmonstr-favorite-2.png"
+            /></span>
+          </div>
         </div>
-        <div class="col_inter2"></div>
       </div>
     </div>
-    <div class="col_2">
-      <div class="row_2">
-        <div class="col_inter">
-          <span (click)="executeClick(item.story_url)">
-            <div class="time">
-              <i class="icon-time"></i>
-              <span class="hours-ago-by-autho"
-                >{{ item.numberHours }} hours ago by {{ item.author }}</span
-              >
-            </div>
-            <div class="title">
-              <span class="event-driven-state-m">{{ item.story_title }}</span>
-            </div>
-          </span>
+  </section>
+  <section class="section_large2">
+    <div
+      class="row_3"
+      *ngFor="
+        let item2 of dataNewsTwo
+          | paginate
+            : {
+                id: 'news',
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalItems
+              };
+        let l = index
+      "
+    >
+      <div class="col_2">
+        <div
+          class="row_2"
+          id="{{ item2.author }}{{ l }}"
+          (mouseover)="Onmouseover($event, item2.author, l)"
+          (mouseout)="Onmouseout($event, item2.author, l)"
+        >
+          <div class="col_inter">
+            <span (click)="executeClick(item2.story_url)">
+              <div class="time">
+                <span class="icomoon-liga icon-time time_icon"></span>
+                <span class="hours-ago-by-autho"
+                  >{{ item2.numberHours }} hours ago by {{ item2.author }}</span
+                >
+              </div>
+              <div class="title">
+                <span class="event-driven-state-m">{{
+                  item2.story_title
+                }}</span>
+              </div>
+            </span>
+          </div>
+          <div class="col_inter2">
+            <span
+              *ngIf="dataNewsPersistence.lastIndexOf(item2) !== -1"
+              class="icomoon-liga icon-heart heart"
+              (click)="checkboxChanged(item2, false)"
+            ></span>
+            <span
+              *ngIf="dataNewsPersistence.lastIndexOf(item2) === -1"
+              class="icomoon-liga heart"
+              (click)="checkboxChanged(item2, true)"
+              ><img src="../../../assets/img/iconmonstr-favorite-2.png"
+            /></span>
+          </div>
         </div>
-        <div class="col_inter2"></div>
       </div>
     </div>
-  </div>
+  </section>
 </section>
+
 <pagination-controls
   class="pagination"
-  *ngIf="selectLanguage"
+  *ngIf="selectLanguage && dataNewsTwo"
   id="news"
   previousLabel=""
   nextLabel=""

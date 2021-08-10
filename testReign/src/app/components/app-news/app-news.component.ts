@@ -14,7 +14,7 @@ export class AppNewsComponent implements OnInit {
   ngOnInit(): void {
     this.tabAct = 'all';
   }
-
+  // controller ListNewsComponent
   controllerList($event: { tabAct: any }): void {
     this.tabAct = $event.tabAct;
     $event.tabAct === 'fav'
@@ -22,6 +22,7 @@ export class AppNewsComponent implements OnInit {
       : (this.flagFilter = true);
   }
 
+  // controller FiltertNewsComponent
   controllerFilter($event: { selectLanguage: any }): void {
     this.selectLanguage = $event.selectLanguage;
   }

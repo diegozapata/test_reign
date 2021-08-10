@@ -2,25 +2,25 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 /**
- * Servicio de control de log.
+ * Service control log.
  */
 @Injectable({
   providedIn: 'root',
 })
 export class LoggerFactory {
   /**
-   * Nivel de log definido desde archivo enviroment.
+   * Log level defined from file enviroment.
    */
   private level!: number;
 
   /**
-   * Flag si se encuentra activa la impresion de Log.
+   * Flag if Log printing is active.
    */
   private active: boolean;
 
   /**
-   * Constructor obtiene desde el archivo enviroment
-   *  el estado de activacion y el nivel a imprimir.
+   * Constructor fetches from enviroment file
+   * the activation status and the level to print.
    */
   constructor() {
     this.active = environment.log.active === 'true';
@@ -44,8 +44,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Desplegar un mensaje de nivel TRACE en consola.
-   * @param msg Mensaje a desplegar
+   * It displays an TRACE level message on the console.
+   * @param msg Message to display.
    * @param object [Optional] Object to print.
    */
   trace(msg: string, object: any = ''): void {
@@ -55,8 +55,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Despliega un mensaje de nivel DEBUD en consola.
-   * @param msg Mensaje a desplegar
+   * It displays an DEBUD level message on the console.
+   * @param msg Message to display.
    * @param object [Optional] Object to print.
    */
   debug(msg: string, object: any = ''): void {
@@ -66,8 +66,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Despliega un mensaje de nivel INFO en consola.
-   * @param msg Mensaje a desplegar.
+   * It displays an INFO level message on the console.
+   * @param msg Message to display.
    * @param object [Optional] Object to print.
    */
   info(msg: string, object: any = ''): void {
@@ -77,8 +77,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Despliega un mensaje de nivel WARNING en consola.
-   * @param msg Mensaje a desplegar.
+   * It displays an warning level message on the console.
+   * @param msg Message to display.
    * @param object [Optional] Object to print.
    */
   warning(msg: string, object: any = ''): void {
@@ -88,8 +88,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Despliega un mensaje de nivel ERROR en consola.
-   * @param msg Mensaje a desplegar.
+   * It displays an ERROR level message on the console.
+   * @param msg Message to display.
    * @param object [Optional] Object to print.
    */
   error(msg: string, object: any = ''): void {
@@ -99,8 +99,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Despliega un mensaje en consola saltandose estado y nivel definido de log.
-   * @param msg  mensaje a desplegar.
+   * Displays a message to the console, skipping the defined log level and status.
+   * @param msg  Message to display.
    * @param object [Optional] Object to print.
    */
   force(msg: string, object: any = ''): void {
@@ -108,8 +108,8 @@ export class LoggerFactory {
   }
 
   /**
-   * Metodo que genera el string a imprimir en consola.
-   * @param msg Mensaje a desplegar.
+   * Method that generates the string to print to the console.
+   * @param msg Message to display.
    */
   private generateMessage(msg: string): string {
     if (msg) {

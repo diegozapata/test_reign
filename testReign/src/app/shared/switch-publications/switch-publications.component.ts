@@ -27,7 +27,9 @@ export class SwitchPublicationsComponent implements OnInit {
     persistence ? (this.tabAct = persistence) : (this.tabAct = 'all');
   }
 
-  // Activa la pestaña seleccionada y hace el switcheo entre vistas (all/fav).
+  /**
+   * switch between screens (all/fav).
+   */
   tabActive(tabVal: any): void {
     this.tabAct = tabVal;
     this.persistenceUtilService.saveLocal('tabAct', this.tabAct);
